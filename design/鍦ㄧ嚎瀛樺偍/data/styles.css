@@ -1,0 +1,479 @@
+﻿.ax_形
+
+状
+{
+    font-family: 'Arial Normal', 'Arial'
+;
+    font-weight: 400
+;
+    font-style: normal
+;
+    font-size: 13px
+;
+    color: #333333
+;
+    text-align: center
+;
+    line-height: normal
+;
+}
+.ax_文
+
+本
+{
+    font-family: 'Arial Normal', 'Arial'
+;
+    font-weight: 400
+;
+    font-style: normal
+;
+    font-size: 13px
+;
+    color: #333333
+;
+    text-align: left
+;
+    line-height: normal
+;
+}
+.ax_h1 {
+    font-family: 'Arial Negreta', 'Arial';
+    font-weight: 700;
+    font-style: normal;
+    font-size: 32px;
+    color: #333333;
+    text-align: left;
+    line-height: normal;
+}
+
+.ax_h2 {
+    font-family: 'Arial Negreta', 'Arial';
+    font-weight: 700;
+    font-style: normal;
+    font-size: 24px;
+    color: #333333;
+    text-align: left;
+    line-height: normal;
+}
+
+.ax_h3 {
+    font-family: 'Arial Negreta', 'Arial';
+    font-weight: 700;
+    font-style: normal;
+    font-size: 18px;
+    color: #333333;
+    text-align: left;
+    line-height: normal;
+}
+
+.ax_h4 {
+    font-family: 'Arial Negreta', 'Arial';
+    font-weight: 700;
+    font-style: normal;
+    font-size: 14px;
+    color: #333333;
+    text-align: left;
+    line-height: normal;
+}
+
+.ax_h5 {
+    font-family: 'Arial Negreta', 'Arial';
+    font-weight: 700;
+    font-style: normal;
+    font-size: 13px;
+    color: #333333;
+    text-align: left;
+    line-height: normal;
+}
+
+.ax_h6 {
+    font-family: 'Arial Negreta', 'Arial';
+    font-weight: 700;
+    font-style: normal;
+    font-size: 10px;
+    color: #333333;
+    text-align: left;
+    line-height: normal;
+}
+
+.ax_图
+
+片
+{
+    font-family: 'Arial Normal', 'Arial'
+;
+    font-weight: 400
+;
+    font-style: normal
+;
+    font-size: 13px
+;
+    color: #000000
+;
+    text-align: center
+;
+    line-height: normal
+;
+}
+.ax_文
+
+本
+链
+接
+{
+    color: #0000FF
+;
+}
+.ax_鼠
+
+标
+悬
+停
+文
+本
+链
+接
+{
+}
+.ax_鼠
+
+标
+按
+下
+文
+本
+链
+接
+{
+}
+.ax_文
+
+本
+框
+_单
+
+行
+_ {
+    font-family: 'Arial Normal', 'Arial';
+    font-weight: 400;
+    font-style: normal;
+    font-size: 13px;
+    color: #000000;
+    text-align: left;
+    line-height: normal;
+}
+
+.ax_文
+
+本
+框
+_多
+
+行
+_ {
+    font-family: 'Arial Normal', 'Arial';
+    font-weight: 400;
+    font-style: normal;
+    font-size: 13px;
+    color: #000000;
+    text-align: left;
+    line-height: normal;
+}
+
+.ax_下
+
+拉
+列
+表
+框
+{
+    font-family: 'Arial Normal', 'Arial'
+;
+    font-weight: 400
+;
+    font-style: normal
+;
+    font-size: 13px
+;
+    color: #000000
+;
+    text-align: left
+;
+    line-height: normal
+;
+}
+.ax_列
+
+表
+选
+择
+框
+{
+    font-family: 'Arial Normal', 'Arial'
+;
+    font-weight: 400
+;
+    font-style: normal
+;
+    font-size: 13px
+;
+    color: #000000
+;
+    text-align: left
+;
+    line-height: normal
+;
+}
+.ax_复
+
+选
+框
+{
+    font-family: 'Arial Normal', 'Arial'
+;
+    font-weight: 400
+;
+    font-style: normal
+;
+    font-size: 13px
+;
+    color: #333333
+;
+    text-align: left
+;
+    line-height: normal
+;
+}
+.ax_单
+
+选
+框
+{
+    font-family: 'Arial Normal', 'Arial'
+;
+    font-weight: 400
+;
+    font-style: normal
+;
+    font-size: 13px
+;
+    color: #333333
+;
+    text-align: left
+;
+    line-height: normal
+;
+}
+.ax_流
+
+程
+形
+状
+{
+    font-family: 'Arial Normal', 'Arial'
+;
+    font-weight: 400
+;
+    font-style: normal
+;
+    font-size: 13px
+;
+    color: #333333
+;
+    text-align: center
+;
+    line-height: normal
+;
+}
+.ax_树
+
+节
+点
+{
+    font-family: 'Arial Normal', 'Arial'
+;
+    font-weight: 400
+;
+    font-style: normal
+;
+    font-size: 13px
+;
+    color: #333333
+;
+    text-align: left
+;
+    line-height: normal
+;
+}
+.ax_html_button {
+    font-family: 'Arial Normal', 'Arial';
+    font-weight: 400;
+    font-style: normal;
+    font-size: 13px;
+    color: #000000;
+    text-align: center;
+    line-height: normal;
+}
+
+.ax_hot_spot {
+    font-size: 13px;
+    color: #333333;
+    text-align: center;
+    line-height: normal;
+}
+
+.ax_内
+
+部
+框
+架
+{
+    font-size: 13px
+;
+    color: #333333
+;
+    text-align: center
+;
+    line-height: normal
+;
+}
+.ax_动
+
+态
+面
+板
+{
+    font-size: 13px
+;
+    color: #333333
+;
+    text-align: center
+;
+    line-height: normal
+;
+}
+.ax_编
+
+辑
+选
+项
+{
+    font-size: 13px
+;
+    color: #333333
+;
+    text-align: center
+;
+    line-height: normal
+;
+}
+.ax_中
+
+继
+器
+{
+    font-family: 'Arial Normal', 'Arial'
+;
+    font-weight: 400
+;
+    font-style: normal
+;
+    font-size: 13px
+;
+    color: #333333
+;
+    text-align: center
+;
+    line-height: normal
+;
+}
+.ax_表
+
+格
+{
+    font-family: 'Arial Normal', 'Arial'
+;
+    font-weight: 400
+;
+    font-style: normal
+;
+    font-size: 13px
+;
+    color: #333333
+;
+    text-align: center
+;
+    line-height: normal
+;
+}
+.ax_表
+
+格
+单
+元
+{
+    font-family: 'Arial Normal', 'Arial'
+;
+    font-weight: 400
+;
+    font-style: normal
+;
+    font-size: 13px
+;
+    color: #333333
+;
+    text-align: left
+;
+    line-height: normal
+;
+}
+.ax_菜
+
+单
+{
+    font-size: 13px
+;
+    color: #000000
+;
+    text-align: center
+;
+    line-height: normal
+;
+}
+.ax_水
+
+平
+线
+{
+    font-size: 13px
+;
+    color: #333333
+;
+    text-align: center
+;
+    line-height: normal
+;
+}
+.ax_垂
+
+直
+线
+{
+    font-size: 13px
+;
+    color: #333333
+;
+    text-align: center
+;
+    line-height: normal
+;
+}
+.ax_connector {
+    font-family: 'Arial Normal', 'Arial';
+    font-weight: 400;
+    font-style: normal;
+    font-size: 13px;
+    color: #333333;
+    text-align: center;
+    line-height: normal;
+}

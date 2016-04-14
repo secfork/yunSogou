@@ -1,0 +1,101 @@
+@import "compass/reset";
+@import "compass/css3";
+@import "compass/utilities";
+@import "compass/utilities/general/clearfix";
+@import "base/globalset";
+
+@include reset-html5;
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-size: 1em;
+  font-family: "Microsoft YaHei", "微软雅黑", "arial";
+}
+
+a {
+  text-decoration: none;
+}
+
+.centerCon {
+  width: $outterWidthPX;
+}
+
+.mainicon {
+  background: $globe_ui_img;
+}
+
+a.button-blue {
+  @include inline-block;
+  padding: 10px 30px;
+  text-align: center;
+  color: #fff;
+  background: #006DCC;
+  cursor: pointer;
+  @include border-radius(4px);
+  &:hover {
+    background: #0044CC;
+  }
+}
+
+.clearfix {
+  @include clearfix;
+}
+
+.clearfix::after {
+  content: "";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+.row::before, .row::after {
+  content: " ";
+  display: table;
+}
+
+.row::after {
+  clear: both;
+}
+
+.row::before, .row::after {
+  content: " ";
+  display: table;
+}
+
+.row::after {
+  clear: both;
+}
+
+.row {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+input.text {
+  border: 1px solid #C6CCD2;
+  padding: 2px;
+  line-height: 14px;
+}
+
+input.checkbox {
+  border: 1px solid #C6CCD2;
+  padding: 0;
+  margin: 0;
+  @include border-radius(0px);
+}
+
+.nopadding {
+  padding: 0 !important;
+}
+
+.noborder {
+  border: none !important;
+}

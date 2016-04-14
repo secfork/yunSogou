@@ -1,0 +1,249 @@
+﻿<!DOCTYPE html />
+<html lang="en">
+<head>
+<title id='Description'>jqxChart Range Selector Example</title>
+<link rel="stylesheet" href="/css/reset.css"/>
+<link rel="stylesheet" href="/css/style.css"/>
+<link rel="stylesheet" href="/css/jqx/jqx.base.css"/>
+<link rel="stylesheet" href="/css/tpl.css"/>
+<script type="text/javascript" src="/js/lib/jquery.min.js"></script>
+<script type="text/javascript" src="/js/lib/jquery.url-params.min.js"></script>
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxcore.js"></script>
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxdata.js"></script>
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxdraw.js"></script>
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxchart.core.js"></script>
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxchart.rangeselector.js"></script>
+<script type="text/javascript">
+var param = new Object();
+$(document).ready(function () {
+    param.s_time = $.urlParams("get", "s_time");
+    param.e_time = $.urlParams("get", "e_time");
+    param.p = parseInt($.urlParams("get", "p"));
+    var link = location.href.split("?")[1];
+    if (location.href.indexOf("yun.sogou/") != -1) {
+        $.ajax({
+            cache: false,
+            dataType: "json",
+            url: '/api/pl_timeline.php?' + link,
+            //url:'/interface/pl_timeline.test?'+link,
+            success: function (data, xhr, opt) {
+                charCallback(data);
+            }
+        });
+    } else {
+        $.ajax({
+            cache: false,
+            dataType: "jsonp",
+            jsonpCallback: "charCallback",
+            url: 'http://yun.sogou/api/pl_timeline.php?' + link
+        });
+    }
+
+});
+function charCallback(e) {
+    if (typeof parent.hideLoader == "function") {
+        parent.hideLoader();
+    }
+    var ds = e, maxdate;
+    var mindate = param.s_time.split("-");
+    mindate = new Date(mindate[1] + " " + mindate[2] + "," + mindate[0] + " 00:00:00");
+    var data = [];
+    for (var i = 0; i < ds.length; i++) {
+        var d = mindate.getTime() + i * param.p * 60 * 1000;
+        var newD = new Date();
+        newD = newD.setTime(d);
+        maxdate = new Date(newD);
+        data.push({Date: newD, value: parseInt(ds[i])});
+    }
+
+    initChart(data, mindate, maxdate)
+}
+
+function initChart(data, mindate, maxdate) {
+    // prepare the data
+    var source =
+    {
+        datatype: "local",
+        datafields: [
+            { name: 'Date' },
+            { name: 'value' }
+        ],
+        localdata: data
+    };
+
+    var dataAdapter = new $.jqx.dataAdapter(source, { async: false, autoBind: true, loadError: function (xhr, status, error) {
+        alert('Error loading "' + source.url + '" : ' + error);
+    } });
+    var months = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'];
+
+    var toolTipCustomFormatFn = function (value, itemIndex, serie, group, categoryValue, categoryAxis) {
+        var dataItem = dataAdapter.records[itemIndex];
+        return '<DIV style="text-align:left;width: 190px; font-size:12px; padding:5px 6px 7px 6px">时间: ' +
+                categoryValue.Format("yyyy年MM月dd日 hh:mm") +
+                '<br />带宽: ' + parseDigital(8, dataItem.value) +
+                '</DIV>';
+    };
+
+    // prepare jqxChart settings
+    var bw = maxdate.Between(mindate).d;
+    var k1 = "";
+    var settings = {
+        title: "带宽数据图",
+        description: "(" + mindate.Format("yyyy年MM月dd日") + " 至 " + maxdate.Format("yyyy年MM月dd日") + ")",
+        enableAnimations: true,
+        animationDuration: 1500,
+        enableCrosshairs: true,
+        padding: { left: 5, top: 5, right: 40, bottom: 5 },
+        titlePadding: { left: 30, top: 5, right: 0, bottom: 10 },
+        source: dataAdapter,
+        borderLineColor: 'White',
+        xAxis: {
+            dataField: 'Date',
+            minValue: mindate,
+            maxValue: maxdate,
+            type: 'date',
+            baseUnit: 'hour',
+            labels: {
+                formatFunction: function (value) {
+                    var v1 = value.Format("hh:mm");
+                    var v2 = value.Format("yyyy-MM-dd");
+                    if (k1 != v2) {
+                        k1 = v2;
+                        return v1 + "<br>" + v2
+                    } else {
+                        return v1 + "<br>";
+                    }
+                }
+            },
+            rangeSelector: {
+                // Uncomment the line below to render the selector in a separate container
+                //renderTo: $('#selectorContainer'),
+                size: 80,
+                padding: { /*left: 0, right: 0,*/top: 0, bottom: 0 },
+                minValue: mindate,
+                backgroundColor: 'white',
+                dataField: 'value',
+                baseUnit: (bw >= 3) ? 'day' : 'hour',
+                gridLines: { visible: false },
+                serieType: 'area',
+                labels: {
+                    horizontalAlignment: 'left',
+                    formatFunction: function (value) {
+                        if (bw >= 3) {
+                            return value.Format("yyyy-MM-dd");
+                        } else {
+                            var v1 = value.Format("hh:mm");
+                            var v2 = value.Format("yyyy-MM-dd");
+                            if (k1 != v2) {
+                                k1 = v2;
+                                return v1 + "<br>" + v2
+                            } else {
+                                return v1 + "<br>";
+                            }
+
+                        }
+
+                    }
+                }
+            }
+        },
+        valueAxis: {
+            title: { text: '带宽数据<br><br>' },
+            labels: {
+                horizontalAlignment: 'right',
+                formatFunction: function (value) {
+                    return parseDigital(3, value, "bps");
+                }
+            }
+        },
+
+        colorScheme: 'scheme01',
+        seriesGroups: [
+            {
+                type: 'line',
+                toolTipFormatFunction: toolTipCustomFormatFn,
+                series: [
+                    { dataField: 'value', displayText: '带宽数据', lineWidth: 1, lineWidthSelected: 1 }
+                ]
+
+            }
+
+        ]
+    };
+
+    $('#chartContainer').jqxChart(settings).
+            on('rangeSelectionChanging', function (event) {
+                var args = event.args;
+                args.instance.description = args.minValue.getFullYear() + " - " + args.maxValue.getFullYear();
+            });
+
+
+}
+function parseDigital(max, number, unit) {
+
+    var s = number;
+    var i = 0;
+    while (s.toString().length > max) {
+        s = Math.round(s / 10);
+        i++;
+    }
+    var r = Math.ceil(i / 3);
+    if (r * 3 > i) {
+        s = s / Math.pow(10, r * 3 - i);
+    } else {
+        s = s * Math.pow(10, i - r * 3);
+    }
+
+    var u = " B";
+    switch (r) {
+        case 1:
+            u = "K";
+            break;
+        case 2:
+            u = "M";
+            break;
+        case 3:
+            u = "G";
+            break;
+        case 4:
+            u = "T";
+            break;
+    }
+    return s + " " + u + unit;
+}
+;
+Date.prototype.Format = function (fmt) { //author: meizz
+    var o = {
+        "M+": this.getMonth() + 1, //月份
+        "d+": this.getDate(), //日
+        "h+": this.getHours(), //小时
+        "m+": this.getMinutes(), //分
+        "s+": this.getSeconds(), //秒
+        "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+        "S": this.getMilliseconds() //毫秒
+    };
+    if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+    for (var k in o)
+        if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+    return fmt;
+};
+
+Date.prototype.Between = function (date) {
+    var be = this.getTime() - date.getTime();
+    return {
+        d: Math.floor(be / (24 * 3600 * 1000)),
+        h: Math.floor(be / (3600 * 1000)),
+        m: Math.floor(be / (60 * 1000))
+    };
+};
+</script>
+</head>
+<body class='default'>
+<div>
+    <div id='chartContainer' style="width:935px; height:480px;">
+    </div>
+    <!-- you can optionally render the selecor in this container -->
+
+</div>
+</body>
+</html>

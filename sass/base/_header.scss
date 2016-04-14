@@ -1,0 +1,124 @@
+header {
+  height: 40px;
+  width: 100%;
+  background: #000;
+  min-width: $outterWidthPX;
+  .centerCon {
+    margin: 0 auto;
+    height: 100%;
+  }
+  a#logo {
+    display: block;
+    float: left;
+  }
+  .logo {
+    height: 40px;
+    width: 120px;
+    background-position: 0 0;
+  }
+  .navbar {
+    float: right;
+    height: 100%;
+    cursor: pointer;
+    position: relative;
+    padding-right: 20px;
+    li {
+      @include user-select(none);
+    }
+    > ul {
+      height: 100%;
+      float: left;
+      li {
+        height: 100%;
+        float: left;
+        &.usericon {
+          padding: 10px 10px 0 10px;
+          img {
+
+            width: 20px;
+            height: 20px;
+          }
+        }
+        &.username {
+          color: #fff;
+          line-height: 40px;
+          font-size: $font_12;
+          padding-right: 10px;
+        }
+        &.navarrow {
+          background-position: 0 -40px;
+          width: 6px;
+          &.active {
+            background-position: 0 -38px;
+          }
+        }
+      }
+    }
+    .navmenu {
+      width: 270px;
+      position: absolute;
+      right: 0px;
+      top: 40px;
+      cursor: default;
+      display: none;
+      z-index: $zidx_l5;
+      @include box-shadow(rgba(0, 0, 0, 0.4) 2px 2px 3px);
+      ul {
+        &::after {
+          background: $globe_ui_img -261px -59px;
+          width: 13px;
+          height: 9px;
+          position: absolute;
+          right: 15px;
+          bottom: 100%;
+          content: "";
+        }
+        li {
+          width: 100%;
+          background: #2E363F;
+          border-bottom: 1px solid #1F262D;
+          border-top: 1px solid #37414B;
+          &.usericon {
+            text-align: center;
+            padding: 10px 0;
+            border-top: none;
+            img {
+              width: 74px;
+              height: 74px;
+              border: 8px solid rgba(255, 255, 255, 0.2);
+              @include border-radius(50%)
+            }
+          }
+          &.userinfo {
+            text-align: center;
+            line-height: 40px;
+            font-size: $font_14;
+            @include text-shadow(rgba(0, 0, 0, 0.9) 2px 2px 3px);
+            color: rgba(255, 255, 255, 0.8);
+          }
+          &.buttons {
+            width: auto;
+            padding: 10px;
+            text-align: center;
+            border-bottom: none;
+            font-size: $font_12;
+            a {
+              line-height: 12px;
+            }
+          }
+        }
+      }
+    }
+  }
+  &.tpl {
+    width: $outterWidthPX;
+    margin: 0 auto;
+    position: relative;
+    a#logo {
+      float: none;
+      position: absolute;
+      top: 22px;
+      left: 38px
+    }
+  }
+}

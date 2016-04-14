@@ -1,0 +1,11 @@
+.chartui {
+  width: 935px;
+  height: 490px;
+  margin: 0 auto;
+  padding-bottom: 10px;
+  .chart-view {
+    height: 100%;
+    position: relative;
+    border: 1px solid #ccc
+  }
+}

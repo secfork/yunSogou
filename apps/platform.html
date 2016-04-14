@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>接入平台 - 云平台</title>
+    <link rel="stylesheet" href="/css/reset.css"/>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/jqx/jqx.base.css"/>
+    <link rel="stylesheet" href="/css/tpl.css"/>
+    <script type="text/javascript" src="/js/lib/TweenMax.min.js"></script>
+    <script type="text/javascript" src="/js/lib/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/lib/jquery.cookie.js"></script>
+    <script type="text/javascript" src="/js/lib/jquery.url-params.min.js"></script>
+    <script type="text/javascript" src="/js/lib/easeljs-0.8.1.min.js"></script>
+    <script type="text/javascript" src="/js/sogou/pandora_sso.js"></script>
+    <script type="text/javascript" src="/js/lib/angular.min.js"></script>
+    <!--[if lt IE 9]>
+    <script src="/js/lib/json2.js"></script>
+    <![endif]-->
+    <script>
+        var app = angular.module('infoWindow', []);
+        app.controller('maininfo', function ($scope) {
+            $scope.do = {"traffic_today": "-", "traffic_yd": "-", "traffic_lastweek": "-", "bw_today": "-"};
+            $scope.refeshdo = function (d) {
+                $scope.do = d;
+                $scope.$apply();
+            }
+        });
+    </script>
+</head>
+<body>
+<!--#include virtual="/inc/header.html"-->
+<!--#include virtual="/inc/topbar.html"-->
+<div class="main clearfix">
+    <!--#include virtual="/inc/mainmenu.html"-->
+    <div class="mainframe">
+        <section class="content" id="main">
+            <div class="row" ng-app="infoWindow" ng-controller="maininfo" id="infoWindow">
+                <div class="width50">
+                    <div class="panel">
+                        <div class="panel-content clearfix">
+                            <div class="width54 topinfo value1">
+                                <div class="num">
+                                    {{do.traffic_today}}
+                                </div>
+                                <div class="title">
+                                    今日峰值流量
+                                </div>
+                            </div>
+                            <div class="width46 topinfo last">
+                                <div class="roundvalue">
+                                    <div class="titleoutter">
+                                        <div class="levels">
+
+                                        </div>
+                                        <div class="title">
+                                            流量日环比
+                                        </div>
+                                    </div>
+                                    <div class="number">
+                                        {{do.traffic_yd}}
+                                    </div>
+                                </div>
+                                <div class="roundvalue noborder">
+                                    <div class="titleoutter">
+                                        <div class="levels">
+
+                                        </div>
+                                        <div class="title">
+                                            流量周环比
+                                        </div>
+                                    </div>
+                                    <div class="number">
+                                        {{do.traffic_lastweek}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="width50">
+                    <div class="panel">
+                        <div class="panel-content clearfix">
+                            <div class="width54 topinfo value1">
+                                <div class="num">
+                                    {{do.bw_today}}
+                                </div>
+                                <div class="title">
+                                    今日峰值带宽
+                                </div>
+                            </div>
+                            <div class="width46 topinfo last">
+                                <div class="roundvalue">
+                                    <div class="titleoutter">
+                                        <div class="levels">
+
+                                        </div>
+                                        <div class="title">
+                                            带宽日环比
+                                        </div>
+                                    </div>
+                                    <div class="number">
+                                        {{do.traffic_yd}}
+                                    </div>
+                                </div>
+                                <div class="roundvalue noborder">
+                                    <div class="titleoutter">
+                                        <div class="levels">
+
+                                        </div>
+                                        <div class="title">
+                                            带宽周环比
+                                        </div>
+                                    </div>
+                                    <div class="number">
+                                        {{do.traffic_lastweek}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="width100">
+                    <div class="panel">
+                        <div class="panel-heading clearfix tablefilter">
+                            <div class="width22 line">
+                                <div class="label">项目</div>
+                                <div class="select">
+                                    <div id="project"></div>
+                                </div>
+                            </div>
+                            <div class="width22 line">
+                                <div class="label">域名</div>
+                                <div class="select">
+                                    <div id="domains"></div>
+                                </div>
+                            </div>
+                            <div class="width22 line">
+                                <div class="label">粒度</div>
+                                <div class="select">
+                                    <div id="timepoint"></div>
+                                </div>
+                            </div>
+                            <div class="width33 line">
+                                <div id="timeButton">
+                                    <button id="time0">
+                                        今天
+                                    </button>
+                                    <button id="time1">
+                                        昨天
+                                    </button>
+                                    <button id="time2">
+                                        近7天
+                                    </button>
+                                    <button id="time3">
+                                        近30天
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="width46 line" style="margin-top: 15px; float: right;">
+                                <div class="select">
+                                    <div id="timeFrom"></div>
+                                </div>
+                                <div class="label center">至</div>
+                                <div class="select">
+                                    <div id="timeEnd"></div>
+                                </div>
+                                <div class="settime btn">设定时间</div>
+                            </div>
+                        </div>
+                        <div class="panel-content clearfix">
+                            <div class="chartui">
+                                <div class="chart-view">
+                                    <iframe frameborder="0" src="about:blank" width="100%" height="100%"
+                                            id="chartContainer" scrolling="no"></iframe>
+                                    <div class="mask" id="mask">
+                                        <div class="loadericon"><span>Loading ...</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="table_search clearfix">
+                                <div class="label">请输入域名</div>
+                                <div class="search-ui" id="tableSearch">
+                                    <input type="text" value="" placeholder="搜索" class="text"/>
+                                </div>
+                                <div class="btns">
+                                    <div class="clear btn" id="tableSearchClear">重置</div>
+                                </div>
+                            </div>
+                            <div style="min-height: 300px; padding: 0 50px">
+                                <div id="jqxgrid" style="margin: 0 auto"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--#include virtual="/inc/filter.html"-->
+    </div>
+</div>
+
+<!--#include virtual="/inc/footer.html"-->
+
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxcore.js"></script>
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxdata.js"></script>
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxbuttons.js"></script>
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxscrollbar.js"></script>
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxpanel.js"></script>
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxbuttongroup.js"></script>
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxradiobutton.js"></script>
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxlistbox.js"></script>
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxdropdownlist.js"></script>
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxcheckbox.js"></script>
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxtree.js"></script>
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxmenu.js"></script>
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxgrid.js"></script>
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxgrid.sort.js"></script>
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxgrid.edit.js"></script>
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxgrid.filter.js"></script>
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxgrid.selection.js"></script>
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxgrid.columnsresize.js"></script>
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxdatetimeinput.js"></script>
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxcalendar.js"></script>
+
+
+<script type="text/javascript" src="http://10.11.203.70/pj_domain.json"></script>
+<script type="text/javascript" src="/js/sogou/projects.js"></script>
+<script type="text/javascript" src="/js/sogou/projects.logic.js"></script>
+<script type="text/javascript" src="/js/sogou/apps/app.platform.js"></script>
+<script>
+
+    var _dropdown = new PASS_DropdropDown({
+        selector: $(".dropdown"),
+        arrowClass: '.navarrow'
+    });
+
+    var _isMenuInit = false, CHANNEL = 1;
+    $(document).ready(function () {
+        User.init(initPage);
+        pandora.checkLogin();
+    });
+    function initPage(_proj, _domains) {
+        initData(_proj, _domains);
+        function showFilter() {
+            $("#main").hide();
+            $("#filter").show();
+        }
+
+        $(".helself").click(function () {
+            showFilter();
+            if (!_isMenuInit) {
+                initfilter(_proj, _domains);
+                _isMenuInit = true;
+            }
+            $(".mainmenu ul li.active").removeClass("on");
+            $(this).addClass("active")
+        });
+        $(document).bind("initPage", initPageDisplay);
+        $(document).bind("showFilter", function () {
+            $(".helself").trigger("click");
+            $(document).unbind("showFilter");
+            hideLoader();
+        })
+
+    }
+
+</script>
+</body>
+</html>

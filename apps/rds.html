@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>接入平台 - 云平台</title>
+    <link rel="stylesheet" href="/css/reset.css"/>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/jqx/jqx.base.css"/>
+    <link rel="stylesheet" href="/css/tpl.css"/>
+    <script type="text/javascript" src="/js/lib/TweenMax.min.js"></script>
+    <script type="text/javascript" src="/js/lib/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/lib/jquery.cookie.js"></script>
+    <script type="text/javascript" src="/js/lib/jquery.url-params.min.js"></script>
+    <script type="text/javascript" src="/js/sogou/pandora_sso.js"></script>
+    <!--[if lt IE 9]>
+    <script src="/js/lib/json2.js"></script>
+    <![endif]-->
+</head>
+<body>
+<!--#include virtual="/inc/header.html"-->
+<!--#include virtual="/inc/topbar.html"-->
+<div class="main clearfix">
+    <!--#include virtual="/inc/mainmenu.html"-->
+    <div class="mainframe">
+        <section class="content" id="main">
+
+            <div class="row">
+                <div class="width100">
+                    <div class="panel">
+                        <div class="panel-heading clearfix tablefilter">
+                            <div class="">
+                                <h1>数据库列表</h1>
+                            </div>
+                            <div class="btnlayer">
+
+                            </div>
+                        </div>
+                        <div class="panel-content clearfix">
+
+                            <div class="table_search clearfix">
+                                <div class="label">请输入域名</div>
+                                <div class="search-ui" id="tableSearch">
+                                    <input type="text" value="" placeholder="搜索" class="text"/>
+                                </div>
+                                <div class="btns">
+                                    <div class="clear btn" id="tableSearchClear">重置</div>
+                                </div>
+                            </div>
+                            <div style="min-height: 300px; padding: 0 50px">
+                                <div id="jqxgrid" style="margin: 0 auto"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--#include virtual="/inc/filter.html"-->
+    </div>
+</div>
+
+<!--#include virtual="/inc/footer.html"-->
+
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxcore.js"></script>
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxdata.js"></script>
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxbuttons.js"></script>
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxscrollbar.js"></script>
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxpanel.js"></script>
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxbuttongroup.js"></script>
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxradiobutton.js"></script>
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxlistbox.js"></script>
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxdropdownlist.js"></script>
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxcheckbox.js"></script>
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxtree.js"></script>
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxtabs.js"></script>
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxmenu.js"></script>
+<!--
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxgrid.js"></script>
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxgrid.sort.js"></script>
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxgrid.edit.js"></script>
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxgrid.filter.js"></script>
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxgrid.selection.js"></script>
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxgrid.columnsresize.js"></script>
+-->
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxdatatable.js"></script>
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxdatetimeinput.js"></script>
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxcalendar.js"></script>
+<script type="text/javascript" src="/js/sogou/apps/app.rds.js"></script>
+
+<script>
+
+    var _dropdown = new PASS_DropdropDown({
+        selector: $(".dropdown"),
+        arrowClass: '.navarrow'
+    });
+
+    var _isMenuInit = false, CHANNEL = 2;
+    $(document).ready(function () {
+        User.init(initPage);
+        pandora.checkLogin();
+    });
+    function initPage() {
+        initRdsList();
+    }
+
+</script>
+</body>
+</html>

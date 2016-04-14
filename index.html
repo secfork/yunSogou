@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title></title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/home.css" />
+    <script type="text/javascript" src="js/lib/TweenMax.min.js"></script>
+    <script type="text/javascript" src="js/lib/jquery.min.js"></script>
+    <script type="text/javascript" src="js/lib/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/lib/jquery.url-params.min.js"></script>
+    <script type="text/javascript" src="js/sogou/pandora_sso.js"></script>
+</head>
+<body>
+<header>
+    <div class="centerCon">
+        <a class="mainicon logo" id="logo" href="/"></a>
+        <div class="dropdown navbar">
+            <ul>
+                <li class="usericon"></li>
+                <li class="username">wangjialin@sogou-inc.com</li>
+                <li class="mainicon navarrow"></li>
+            </ul>
+            <div class="navmenu dropdown-menu">
+                <ul>
+                    <li class="usericon"></li>
+                    <li class="userinfo"></li>
+                    <li class="buttons">
+                        <a class="button-blue">注销</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="home-teaser">
+    <ul>
+        <li><img src="images/home/teaser.jpg" /></li>
+    </ul>
+</div>
+<div class="home-content">
+    <div class="title">
+        <h1 class="mainicon"></h1>
+    </div>
+    <a class="mainicon devdoc" href="javascript:;"></a>
+</div>
+<div class="brandlist">
+    <ul class="clearfix">
+        <li class="active"><a href="apps/platform.html"><img src="images/home/brand01.jpg" /></a></li>
+        <li class="active"><a href="apps/rds.html"><img src="images/home/brand02.jpg" /></a></li>
+        <li><a href="javascript:;"><img src="images/home/brand03.jpg" /></a></li>
+        <li><a href="javascript:;"><img src="images/home/brand04.jpg" /></a></li>
+        <li><a href="javascript:;"><img src="images/home/brand05.jpg" /></a></li>
+        <li class="last-child"><a href="javascript:;"><img src="images/home/brand06.jpg" /></a></li>
+    </ul>
+    <div class="clearfix blk"></div>
+</div>
+<footer>
+    <div class="centerCon">
+        2015 &copy; 版权信息
+        <div class="mainicon bottom-logo"></div>
+    </div>
+
+</footer>
+<script type="text/javascript" src="http://10.11.203.70/pj_domain.json"></script>
+<script>
+    pandora.checkLogin();
+    var olda=0;
+    var _dropdown=new PASS_DropdropDown({
+        selector: $(".dropdown"),
+        arrowClass: '.navarrow'
+    });
+</script>
+</body>
+</html>

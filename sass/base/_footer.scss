@@ -1,0 +1,25 @@
+footer {
+  background: #2E363F;
+  height: 40px;
+  line-height: 40px;
+  font-size: $font_14;
+  color: #666;
+  text-align: center;
+
+  .centerCon {
+    margin: 0 auto;
+    position: relative;
+  }
+  .bottom-logo {
+    background-position: -150px 0;
+    position: absolute;
+    right: 20px;
+    top: 0;
+    height: 40px;
+    width: 95px;
+  }
+  &.tpl {
+    width: $outterWidthPX;
+    margin: 0 auto;
+  }
+}

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<meta charset="UTF-8">
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<title>123123</title>
+<link rel="stylesheet" href="/css/reset.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="stylesheet" href="/css/jqx/jqx.base.css" />
+<link rel="stylesheet" href="/css/tpl.css" />
+<script type="text/javascript" src="/js/lib/TweenMax.min.js"></script>
+<script type="text/javascript" src="/js/lib/jquery.min.js"></script>
+<script type="text/javascript" src="/js/lib/angular.min.js"></script>
+<script type="text/javascript" src="/js/lib/jquery.cookie.js"></script>
+<script type="text/javascript" src="/js/lib/jquery.url-params.min.js"></script>
+<script type="text/javascript" src="/js/lib/easeljs-0.8.1.min.js"></script>
+<script type="text/javascript" src="/js/sogou/pandora_sso.js"></script>
+
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxcore.js"></script>
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxangular.js"></script>
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxdata.js"></script>
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxbuttons.js"></script>
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxscrollbar.js"></script>
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxpanel.js"></script>
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxlistbox.js"></script>
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxcheckbox.js"></script>
+<script type="text/javascript" src="/js/lib/jqwidgets/jqxtree.js"></script>
+
+<script type="text/javascript" src="/js/sogou/projects.js"></script>
+<script type="text/javascript" src="/interface/pj_domain.json"></script>
+
+<script type="text/javascript">
+    var mypro="_76_74_80_50_148";
+    var _p=new projectManager(pj_domain,mypro);
+
+    var demoApp = angular.module("myDomains", ["jqwidgets"]);
+    demoApp.controller("projectPanel", function ($scope) {
+        //
+        data= _p.allNode;
+
+        var s_tree = {
+            datatype: "local",
+            datafields: [
+                { name: 'id' },
+                { name: 'parentid' },
+                { name: 'text' },
+                { name: 'value' },
+                { name: 'expanded' }
+            ],
+            id: 'id',
+            localdata: data
+        };
+        var AP_tree = new $.jqx.dataAdapter(s_tree);
+        AP_tree.dataBind();
+
+        var res_tree = AP_tree.getRecordsHierarchy('id', 'parentid', 'items', [{ name: 'text', map: 'label'},{ name: 'expanded', map: 'expanded'}]);
+
+        $scope.projectListSettings={ source: res_tree, width: '100%',height:null}
+        $scope.treeInit=function(){
+            alert(1);
+        }
+    });
+</script>
+</head>
+<body>
+<!--#include virtual="inc/header.html"-->
+<!--#include virtual="inc/topbar.html"-->
+<div class="main clearfix">
+    <!--#include virtual="inc/mainmenu.html"-->
+    <div class="mainframe">
+        <section class="content" id="filter" ng-app="myDomains">
+            <div class="row">
+                <div class="width100 innertitle">
+                    <div class="panel">使用帮助：在左侧框选中域名，点击【>】按钮移入右侧已选框；选中右侧已选域名，点击【<】移除</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="width63 innerleft">
+                    <div class="panel">
+                        <div class="panel-heading clearfix">
+                            <i></i>
+                            <h3 >域名筛选</h3>
+                            <div class="search-ui" id="search">
+                                <input type="text" value="" placeholder="搜索" class="text"/>
+                            </div>
+                        </div>
+                        <div class="panel-content clearfix nopadding">
+                            <div class="width58">
+                                <div class="panel inner dashborder-right">
+                                    <div class="panel-heading clearfix">
+                                        <h3>项目</h3>
+                                    </div>
+                                    <div class="paneel-content" ng-controller="projectPanel">
+                                        <div jqx-settings="projectSettings" class="treeContainer" id="projectPanel" >
+                                            <jqx-tree id="projects" jqx-settings="projectListSettings" jqx-on-initialized="treeInit"></jqx-tree>
+
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="width42">
+                                <div class="panel inner">
+                                    <div class="panel-heading clearfix">
+                                        <div class="checkall" style="line-height: 13px">
+                                            <div id="checkall"><label>全选</label></div>
+                                        </div>
+                                        <div class="resetlink">
+                                            <a href="javascript:;">Reset</a>
+                                        </div>
+                                    </div>
+                                    <div class="paneel-content" style="padding: 0 0 0 10px;">
+                                        <div id="projectList"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="width11 innercenter">
+                    <div class="panel selectlayer">
+                        <div class="toright mainicon ico11" id="toright"></div>
+                        <div class="toleft mainicon ico12" id="toleft"></div>
+                    </div>
+                </div>
+                <div class="width26 innerright">
+                    <div class="panel">
+                        <div class="panel-heading clearfix">
+                            <i></i>
+                            <h3 >已选项目</h3>
+                        </div>
+                        <div class="panel-content clearfix" style="height: 535px; padding: 0 0 0 10px;">
+                            <div id="projecSelectedList"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="width100 btnlayer">
+                    <div class="btnoutter">
+                        <a class="submit btn"></a>
+                    </div>
+                    <div class="btnoutter">
+                        <a class="cancel btn"></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<!--#include virtual="inc/footer.html"-->
+</body>
+</html>

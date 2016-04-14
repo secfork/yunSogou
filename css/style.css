@@ -1,0 +1,178 @@
+header {
+    height: 40px;
+    width: 100%;
+    background: #000;
+    min-width: 1400px;
+}
+
+header .centerCon {
+    margin: 0 auto;
+    height: 100%;
+}
+
+header a#logo {
+    display: block;
+    float: left;
+}
+
+header .logo {
+    height: 40px;
+    width: 120px;
+    background-position: 0 0;
+}
+
+header .navbar {
+    float: right;
+    height: 100%;
+    cursor: pointer;
+    position: relative;
+    padding-right: 20px;
+}
+
+header .navbar li {
+    -moz-user-select: -moz-none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+header .navbar > ul {
+    height: 100%;
+    float: left;
+}
+
+header .navbar > ul li {
+    height: 100%;
+    float: left;
+}
+
+header .navbar > ul li.usericon {
+    padding: 10px 10px 0 10px;
+}
+
+header .navbar > ul li.usericon img {
+    width: 20px;
+    height: 20px;
+}
+
+header .navbar > ul li.username {
+    color: #fff;
+    line-height: 40px;
+    font-size: 0.75em;
+    padding-right: 10px;
+}
+
+header .navbar > ul li.navarrow {
+    background-position: 0 -40px;
+    width: 6px;
+}
+
+header .navbar > ul li.navarrow.active {
+    background-position: 0 -38px;
+}
+
+header .navbar .navmenu {
+    width: 270px;
+    position: absolute;
+    right: 0px;
+    top: 40px;
+    cursor: default;
+    display: none;
+    z-index: 999;
+    -moz-box-shadow: rgba(0, 0, 0, 0.4) 2px 2px 3px;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.4) 2px 2px 3px;
+    box-shadow: rgba(0, 0, 0, 0.4) 2px 2px 3px;
+}
+
+header .navbar .navmenu ul::after {
+    background: url(../images/icons/sprite.png) no-repeat -261px -59px;
+    width: 13px;
+    height: 9px;
+    position: absolute;
+    right: 15px;
+    bottom: 100%;
+    content: "";
+}
+
+header .navbar .navmenu ul li {
+    width: 100%;
+    background: #2E363F;
+    border-bottom: 1px solid #1F262D;
+    border-top: 1px solid #37414B;
+}
+
+header .navbar .navmenu ul li.usericon {
+    text-align: center;
+    padding: 10px 0;
+    border-top: none;
+}
+
+header .navbar .navmenu ul li.usericon img {
+    width: 74px;
+    height: 74px;
+    border: 8px solid rgba(255, 255, 255, 0.2);
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+
+header .navbar .navmenu ul li.userinfo {
+    text-align: center;
+    line-height: 40px;
+    font-size: 0.875em;
+    text-shadow: rgba(0, 0, 0, 0.9) 2px 2px 3px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+header .navbar .navmenu ul li.buttons {
+    width: auto;
+    padding: 10px;
+    text-align: center;
+    border-bottom: none;
+    font-size: 0.75em;
+}
+
+header .navbar .navmenu ul li.buttons a {
+    line-height: 12px;
+}
+
+header.tpl {
+    width: 1400px;
+    margin: 0 auto;
+    position: relative;
+}
+
+header.tpl a#logo {
+    float: none;
+    position: absolute;
+    top: 22px;
+    left: 38px;
+}
+
+footer {
+    background: #2E363F;
+    height: 40px;
+    line-height: 40px;
+    font-size: 0.875em;
+    color: #666;
+    text-align: center;
+}
+
+footer .centerCon {
+    margin: 0 auto;
+    position: relative;
+}
+
+footer .bottom-logo {
+    background-position: -150px 0;
+    position: absolute;
+    right: 20px;
+    top: 0;
+    height: 40px;
+    width: 95px;
+}
+
+footer.tpl {
+    width: 1400px;
+    margin: 0 auto;
+}

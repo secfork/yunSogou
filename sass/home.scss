@@ -1,0 +1,104 @@
+@import "compass/css3";
+@import "compass/utilities";
+@import "base/globalset";
+
+.home-teaser {
+  width: 100%;
+  overflow: hidden;
+  height: 447px;
+  position: relative;
+  min-width: $outterWidthPX;
+  ul {
+    width: 1920px;
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    margin-left: -960px;
+    li {
+      position: absolute;
+      left: 0;
+      top: 0;
+      line-height: 0;
+    }
+  }
+}
+
+.home-content {
+  width: $outterWidthPX;
+  height: 30px;
+  margin: 39px auto;
+  background: url(../images/icons/line_1px_h40.png) repeat-x;
+  position: relative;
+  .title {
+    background: #fff;
+    width: 160px;
+    height: 100%;
+    margin: 0 auto;
+    h1 {
+      background-position: 0 -90px;
+      width: 134px;
+      height: 100%;
+      margin: 0 auto;
+    }
+  }
+  .devdoc {
+    background-position: -150px -91px;
+    width: 107px;
+    height: 29px;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
+
+.brandlist {
+  width: $outterWidthPX;
+  margin: 0 auto;
+  ul {
+    li {
+      float: left;
+      margin-right: 34px;
+      a {
+        padding: 2px;
+        overflow: hidden;
+        display: block;
+        line-height: 0;
+      }
+      &.last-child {
+        margin-right: 0px;
+      }
+      &.active {
+        a {
+          border: 1px solid #ccc;
+          padding: 1px;
+
+          @include border-radius(10px);
+
+          img {
+            @include opacity(0.8);
+            @include transition-property(opacity);
+            @include transition-duration(0.3s);
+            @include transition-timing-function(ease-out);
+            &:hover {
+              @include opacity(1);
+              @include transition-property(opacity);
+              @include transition-duration(0.3s);
+              @include transition-timing-function(ease-in);
+            }
+          }
+          &:hover {
+            border: 2px solid #27a9e3;
+            padding: 0;
+          }
+        }
+
+      }
+    }
+
+  }
+  .blk {
+    height: 145px;
+  }
+}
